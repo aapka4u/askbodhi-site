@@ -99,8 +99,8 @@ async function fetchAhrefs(domain: string): Promise<{
   const date = todayStr();
 
   try {
-    // Fire all three Ahrefs calls in parallel
-    const [drRes, metricsRes, compRes] = await Promise.allSettled([
+    // Fire all four Ahrefs calls in parallel
+    const [drRes, metricsRes, blRes, compRes] = await Promise.allSettled([
       // 1. Domain Rating
       fetch(
         `${baseUrl}/domain-rating?` +
@@ -114,52 +114,71 @@ async function fetchAhrefs(domain: string): Promise<{
             target: domain,
             date,
             mode: 'subdomains',
-            output: 'json',
           }).toString(),
         { headers, signal: AbortSignal.timeout(10000) }
       ),
-      // 3. Organic Competitors
+      // 3. Backlinks Stats (separate endpoint)
+      fetch(
+        `${baseUrl}/backlinks-stats?` +
+          new URLSearchParams({
+            target: domain,
+            date,
+            mode: 'subdomains',
+          }).toString(),
+        { headers, signal: AbortSignal.timeout(10000) }
+      ),
+      // 4. Organic Competitors (requires select + country)
       fetch(
         `${baseUrl}/organic-competitors?` +
           new URLSearchParams({
             target: domain,
             date,
             mode: 'subdomains',
+            select: 'competitor_domain,domain_rating,keywords_common',
+            country: 'us',
             limit: '5',
-            output: 'json',
           }).toString(),
         { headers, signal: AbortSignal.timeout(10000) }
       ),
     ]);
 
     // Parse Domain Rating
+    // API returns: { "domain_rating": { "domain_rating": 46.0, "ahrefs_rank": 912037 } }
     let domainRating = 0;
     if (drRes.status === 'fulfilled' && drRes.value.ok) {
       const drData = await drRes.value.json();
-      domainRating = drData.domain_rating ?? drData.domainRating ?? 0;
+      domainRating = drData.domain_rating?.domain_rating ?? 0;
     }
 
     // Parse Metrics
+    // API returns: { "metrics": { "org_keywords": 962, "org_traffic": 2176, ... } }
     let organicKeywords = 0;
     let monthlyTraffic = 0;
-    let backlinks = 0;
     if (metricsRes.status === 'fulfilled' && metricsRes.value.ok) {
       const mData = await metricsRes.value.json();
-      organicKeywords = mData.organic?.keywords ?? mData.org_keywords ?? 0;
-      monthlyTraffic = Math.round(mData.organic?.traffic ?? mData.org_traffic ?? 0);
-      backlinks = mData.backlinks ?? 0;
+      organicKeywords = mData.metrics?.org_keywords ?? 0;
+      monthlyTraffic = Math.round(mData.metrics?.org_traffic ?? 0);
+    }
+
+    // Parse Backlinks
+    // API returns: { "metrics": { "live": 8134, "all_time": 18662, ... } }
+    let backlinks = 0;
+    if (blRes.status === 'fulfilled' && blRes.value.ok) {
+      const blData = await blRes.value.json();
+      backlinks = blData.metrics?.live ?? 0;
     }
 
     // Parse Competitors
+    // API returns: { "competitors": [{ "competitor_domain": "...", "domain_rating": 88, "keywords_common": 91 }] }
     const competitors: AhrefsCompetitor[] = [];
     if (compRes.status === 'fulfilled' && compRes.value.ok) {
       const cData = await compRes.value.json();
-      const rows = cData.competitors ?? cData.organic_competitors ?? [];
+      const rows = cData.competitors ?? [];
       for (const row of rows.slice(0, 5)) {
         competitors.push({
-          domain: row.domain ?? row.target ?? 'unknown',
-          dr: row.domain_rating ?? row.dr ?? 0,
-          commonKeywords: row.common_keywords ?? row.keywords_unique ?? 0,
+          domain: row.competitor_domain ?? 'unknown',
+          dr: row.domain_rating ?? 0,
+          commonKeywords: row.keywords_common ?? 0,
         });
       }
     }
