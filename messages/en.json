@@ -1,0 +1,505 @@
+{
+  "nav": {
+    "services": "Services",
+    "results": "Results",
+    "approach": "Approach",
+    "faq": "FAQ",
+    "getFreeDiagnostic": "Get a Free Diagnostic"
+  },
+  "hero": {
+    "label": "AI-Led Growth Consultancy",
+    "title": "Your company deserves to be found — by humans and AI.",
+    "subtitle": "You're spending on ads because organic isn't working. Your competitors rank above you. AI search is changing the game and you're not in it. We fix all three.",
+    "primaryCta": "Take the Free Assessment",
+    "secondaryCta": "See How We Work",
+    "secondaryLink": "See how we diagnosed a company like yours →"
+  },
+  "proofBar": {
+    "items": [
+      {
+        "value": "€0 → €12K",
+        "label": "Monthly organic traffic value created"
+      },
+      {
+        "value": "13,000",
+        "label": "New visitors without ad spend"
+      },
+      {
+        "value": "47",
+        "label": "Untapped keywords found per client (avg)"
+      },
+      {
+        "value": "3–5×",
+        "label": "ROI vs. equivalent ad spend"
+      }
+    ]
+  },
+  "services": {
+    "label": "What We Do",
+    "title": "We make companies the top digital asset in their sector",
+    "description": "Today, being \"found\" means more than Google rankings. Your customers search on ChatGPT, Perplexity, and AI Overviews. We make sure you show up everywhere that matters — and that the traffic you get actually drives revenue.",
+    "items": [
+      {
+        "title": "SEO & Generative Engine Optimization",
+        "description": "Most companies pay for Google Ads because their website doesn't rank. We fix that — and go further. We make sure you show up when people search on ChatGPT, Perplexity, and Google's AI answers too. Because that's where your next customers are already looking."
+      },
+      {
+        "title": "Traffic Architecture Diagnostics",
+        "description": "Before we change anything, we break down exactly where your traffic comes from — and what percentage actually leads to revenue. Most companies discover that 80% of their visitors will never become customers. That's the gap we close."
+      },
+      {
+        "title": "Custom AI Engines",
+        "description": "Purpose-built AI systems for your domain — product recommendation engines, intelligent content generation, automated workflows. Not ChatGPT wrappers, but engines designed around your specific business logic and data."
+      },
+      {
+        "title": "AI-First Transformation",
+        "description": "The bigger play. Once we've proven impact on your digital presence, we help convert your entire operation into an AI-first architecture — from how you serve customers to how your team works. A fractional AI transformation lead, embedded in your business."
+      }
+    ]
+  },
+  "results": {
+    "label": "Proven Results",
+    "title": "The sectors are different. The pattern is identical.",
+    "description": "Every engagement starts the same way: a company spending on ads, underperforming on organic, and invisible to AI search. Here's what happens when you fix it.",
+    "items": [
+      {
+        "flag": "🇳🇱",
+        "region": "Netherlands · Publishing",
+        "title": "Leading Dutch Publishing Group",
+        "description": "Spending on ads across multiple brands with no organic strategy. We found that only 25 of their 700 monthly visits had commercial intent. Within 90 days, we restructured the entire organic architecture and built a custom AI engine that lifted paid performance by 56%.",
+        "stats": [
+          {
+            "value": "+56%",
+            "label": "Paid performance lift"
+          },
+          {
+            "value": "13K",
+            "label": "Organic clicks / 90 days"
+          }
+        ]
+      },
+      {
+        "flag": "🇮🇳",
+        "region": "India · Fintech",
+        "title": "EximPe",
+        "description": "11,000 monthly visitors — and almost none of them were potential customers. Classic content-traffic mismatch. We rebuilt the content architecture to align traffic with revenue, turning vanity metrics into commercial pipeline."
+      },
+      {
+        "flag": "🇳🇱",
+        "region": "Netherlands · ESG Intelligence",
+        "title": "KnowESG",
+        "description": "Competing against well-funded incumbents with no organic strategy. We deployed an AI-driven content architecture and entity-rich schema strategy that built organic authority in a regulation-heavy sector — and made them visible to AI search engines."
+      }
+    ]
+  },
+  "mirror": {
+    "title": "Sound familiar?",
+    "items": [
+      "You're the one managing marketing (among everything else)",
+      "Google Ads feels expensive but you can't turn it off",
+      "Your competitors rank above you for your core services",
+      "You've tried an agency before and got a PDF nobody read",
+      "You've never heard of GEO and now you're worried you should have",
+      "You know your website should work harder — you just don't know where to start"
+    ],
+    "cta": "Find out where you stand — takes 5 minutes →"
+  },
+  "approach": {
+    "label": "How We Work",
+    "title": "Diagnose. Build. Scale.",
+    "description": "We don't hand over a strategy deck and disappear. We embed alongside your team and execute — proving the model before scaling.",
+    "items": [
+      {
+        "step": "01",
+        "title": "Diagnose",
+        "timeframe": "Week 1–2",
+        "description": "Full digital diagnostic. Traffic architecture breakdown, technical SEO audit, GEO readiness assessment, AI visibility check, and competitive landscape analysis. You get a clear picture of where you stand — and exactly what to fix first."
+      },
+      {
+        "step": "02",
+        "title": "Build",
+        "timeframe": "Month 1–3",
+        "description": "Execute the prioritized fix list. Schema markup, content restructuring, AI engine optimization, GEO implementation. Quick wins first, then strategic moves. Everything developer-ready with file paths, code, and exact copy."
+      },
+      {
+        "step": "03",
+        "title": "Scale",
+        "timeframe": "Month 4–6+",
+        "description": "Weekly scorecards, monthly strategy, quarterly roadmap. Prove results on one brand, replicate across the group. Expand from SEO/GEO into broader AI-first transformation as trust and results compound."
+      }
+    ],
+    "callout": "You'll see data in week one. Results in month one. ROI by month three. If it's not working, you'll know — and so will we. No 12-month lock-ins. No vague promises. Just transparent, measurable progress."
+  },
+  "toolbar": {
+    "description": "We don't guess. Every recommendation is backed by the same data platforms used by enterprise growth teams."
+  },
+  "who": {
+    "label": "This Is For You If...",
+    "title": "You'll know it when you see it",
+    "description": "We don't work with a sector. We work with a situation. If the lines below describe your Tuesday morning, we should talk.",
+    "items": [
+      "You're the founder, director, or partner — and marketing lands on your desk because there's no one else",
+      "You spend €2K–8K/month on Google Ads and you're not sure it's working",
+      "Your competitors rank above you for the terms that matter most",
+      "You've heard about AI search but have no idea how to show up in it",
+      "You want an embedded partner, not another agency that sends reports you don't read",
+      "Your company does €1M–20M in revenue and growth depends on being found online"
+    ]
+  },
+  "vision": {
+    "label": "Where This Is Heading",
+    "title": "It starts with being found. It leads to something bigger.",
+    "description": "We start with what's proven: making you the top digital asset in your sector. But the relationship doesn't stop at SEO. As your trusted AI partner, we help your company become genuinely AI-first — in how you serve customers, make decisions, and operate day to day.",
+    "scale": "10–200",
+    "scaleSubtitle": "person companies we're built for",
+    "tags": [
+      {
+        "label": "SEO & GEO",
+        "type": "active"
+      },
+      {
+        "label": "Content Architecture",
+        "type": "active"
+      },
+      {
+        "label": "AI Workflows",
+        "type": "next"
+      },
+      {
+        "label": "Custom AI Engines",
+        "type": "next"
+      },
+      {
+        "label": "AI-First Operations",
+        "type": "future"
+      },
+      {
+        "label": "Product AI",
+        "type": "future"
+      }
+    ]
+  },
+  "assessmentCta": {
+    "label": "AI Readiness Assessment",
+    "title": "12 questions. 5 minutes. We do the rest.",
+    "highlight": "What if 40% of your Google Ads budget could be replaced by organic traffic?",
+    "description": "You answer 12 questions about your business. We analyze your website's traffic architecture, AI visibility, and competitive position using the same tools enterprise agencies charge €5K to run. You get a scored report with specific recommendations — not a sales pitch.",
+    "cta": "Take the Free Assessment →",
+    "steps": [
+      {
+        "num": "1",
+        "text": "You invest 5 minutes answering 12 honest questions about your business, traffic, and growth challenges.",
+        "bg": "var(--color-teal)"
+      },
+      {
+        "num": "2",
+        "text": "We analyze your digital footprint — traffic architecture, AI engine visibility, competitive positioning, and content quality using enterprise-grade tools.",
+        "bg": "var(--color-ember)"
+      },
+      {
+        "num": "3",
+        "text": "You get a scored AI readiness report with specific, prioritized recommendations — not a sales pitch disguised as advice.",
+        "bg": "var(--color-teal-bright)"
+      }
+    ],
+    "headerLabel": "AI Readiness Assessment"
+  },
+  "faq": {
+    "label": "Frequently Asked",
+    "title": "Questions we hear in every first call",
+    "items": [
+      {
+        "q": "We already have an SEO agency. Why would we switch?",
+        "a": "Most SEO agencies optimize for Google rankings alone. We go further — we optimize for AI engine citations (ChatGPT, Perplexity, Google AI Overviews) through Generative Engine Optimization. Plus, we start every engagement with a traffic architecture diagnostic that shows what percentage of your traffic actually drives revenue. Most agencies skip this step entirely."
+      },
+      {
+        "q": "How is this different from hiring a freelance SEO consultant?",
+        "a": "A freelance consultant gives you advice. We give you execution. AskBodhi operates as a fractional growth team embedded in your business, using enterprise-grade tools like Ahrefs, Google Search Console, GA4, and AI visibility monitoring. You get the firepower of a full marketing department without hiring one."
+      },
+      {
+        "q": "We're a small team — we don't have bandwidth for a big project.",
+        "a": "That's exactly who we're built for. Most of our clients don't have a marketing department — the founder or director handles digital alongside everything else. We execute, not just advise. You invest 5 minutes in an assessment, we do the heavy analytical lifting, and every deliverable comes developer-ready with exact file paths, code, and copy."
+      },
+      {
+        "q": "What's GEO and why should I care?",
+        "a": "GEO stands for Generative Engine Optimization — the discipline of getting your company cited by AI assistants like ChatGPT, Perplexity, and Google's AI Overviews. These platforms are rapidly replacing traditional search for many queries. If your company isn't optimized for AI engines, you're invisible to a growing share of your potential customers."
+      },
+      {
+        "q": "How quickly will we see results?",
+        "a": "You'll see data in week one — our diagnostic reveals exactly where you stand. Quick wins (technical fixes, schema markup, content restructuring) start delivering in month one. Measurable ROI against your ad spend typically shows by month three. We track everything transparently so you always know what's working."
+      },
+      {
+        "q": "Do you work with companies outside the Netherlands?",
+        "a": "Yes. We're based in the Netherlands and serve clients across Europe and Asia. The methodology works wherever search engines and AI assistants exist. Our current portfolio spans the Netherlands, India, and global ESG markets."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Your company deserves to be found — by humans and AI.",
+    "services": "Services",
+    "serviceLinks": [
+      {
+        "name": "SEO & GEO Optimization",
+        "href": "/#services"
+      },
+      {
+        "name": "Traffic Architecture Diagnostics",
+        "href": "/#services"
+      },
+      {
+        "name": "Custom AI Engines",
+        "href": "/#services"
+      },
+      {
+        "name": "AI-First Transformation",
+        "href": "/#services"
+      }
+    ],
+    "contact": "Contact",
+    "email": "info@askbodhi.ai",
+    "location": "Netherlands · Serving globally",
+    "copyright": "© {year} AskBodhi. All rights reserved."
+  },
+  "contact": {
+    "label": "Free Diagnostic",
+    "title": "Let's find out where your traffic really goes",
+    "description": "Fill in your details and we'll send you a free traffic architecture breakdown — showing what percentage of your organic traffic actually drives revenue.",
+    "successTitle": "Thank you!",
+    "successMessage": "We've received your details. We'll review your site and get back to you within 48 hours with your traffic architecture breakdown.",
+    "form": {
+      "nameLabel": "Your name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@company.com",
+      "websiteLabel": "Website URL",
+      "websitePlaceholder": "https://yourcompany.com",
+      "messageLabel": "What's your biggest growth challenge right now?",
+      "messagePlaceholder": "e.g., We get traffic but it doesn't convert, we're invisible in AI search results, our competitors outrank us...",
+      "submitButton": "Request My Free Diagnostic",
+      "submittingButton": "Sending...",
+      "disclaimer": "No spam, no sales pitch. Just a data-driven breakdown of your traffic architecture.",
+      "error": "Something went wrong. Please try again or email us at info@askbodhi.ai."
+    }
+  },
+  "assessment": {
+    "label": "AI Readiness Assessment",
+    "title": "12 questions. 5 minutes. We do the rest.",
+    "question": "What if 40% of your Google Ads budget could be replaced by organic traffic?",
+    "description": "You answer 12 questions about your business. We analyze your website's traffic architecture, AI visibility, and competitive position using the same tools enterprise agencies charge €5K to run. You get a scored report with specific recommendations — not a sales pitch.",
+    "cta": "Take the Free Assessment →",
+    "steps": [
+      {
+        "num": "1",
+        "text": "You invest 5 minutes answering 12 honest questions about your business, traffic, and growth challenges.",
+        "bg": "var(--color-teal)"
+      },
+      {
+        "num": "2",
+        "text": "We analyze your digital footprint — traffic architecture, AI engine visibility, competitive positioning, and content quality using enterprise-grade tools.",
+        "bg": "var(--color-ember)"
+      },
+      {
+        "num": "3",
+        "text": "You get a scored AI readiness report with specific, prioritized recommendations — not a sales pitch disguised as advice.",
+        "bg": "var(--color-teal-bright)"
+      }
+    ],
+    "headerLabel": "AI Readiness Assessment"
+  },
+  "assessmentForm": {
+    "intro": {
+      "heading": "How AI-ready is your company?",
+      "description": "Get a live digital analysis—we'll scan your site, benchmark competitors, and score your readiness across 5 dimensions.",
+      "meta": {
+        "time": "5 minutes",
+        "privacy": "Data stays private",
+        "report": "Scored report"
+      },
+      "cta": "Start the Assessment →"
+    },
+    "nav": {
+      "back": "← Back",
+      "continue": "Continue →",
+      "questionPrefix": "Question"
+    },
+    "steps": {
+      "q01": {
+        "title": "Let's start with you",
+        "hint": "We'll use this to send your AI Readiness Report.",
+        "fields": {
+          "name": {
+            "label": "Your name",
+            "placeholder": "Full name"
+          },
+          "role": {
+            "label": "Your role",
+            "placeholder": "e.g. CEO, Head of Marketing"
+          },
+          "email": {
+            "label": "Work email",
+            "placeholder": "you@company.com"
+          },
+          "company": {
+            "label": "Company name",
+            "placeholder": "Your company"
+          }
+        }
+      },
+      "q02": {
+        "title": "About your company",
+        "hint": "Your website URL is the most important field — it triggers our live analysis.",
+        "fields": {
+          "website": {
+            "label": "Company website",
+            "placeholder": "https://yourcompany.com"
+          },
+          "industry": {
+            "label": "Industry / sector",
+            "placeholder": "Start typing..."
+          },
+          "country": {
+            "label": "Primary market",
+            "placeholder": "Start typing..."
+          }
+        }
+      },
+      "q03": {
+        "title": "How big is your team?",
+        "options": {
+          "1-10": "1–10 people",
+          "11-50": "11–50 people",
+          "51-200": "51–200 people",
+          "200+": "200+ people"
+        }
+      },
+      "q04": {
+        "title": "Where do most of your customers find you today?",
+        "options": {
+          "google": "Google search",
+          "paid": "Paid ads (Google, Meta, LinkedIn)",
+          "referral": "Referrals or word of mouth",
+          "social": "Social media",
+          "ai_search": "AI search (ChatGPT, Perplexity)",
+          "unsure": "Honestly, I'm not sure"
+        }
+      },
+      "q05": {
+        "title": "Do you know what percentage of your website traffic actually drives revenue?",
+        "hint": "This is the question most companies can't answer.",
+        "options": {
+          "yes": "Yes — we track this closely",
+          "roughly": "We have a rough idea",
+          "no": "No — we track traffic but not its commercial value"
+        }
+      },
+      "q06": {
+        "title": "Have you searched for your company in ChatGPT or Perplexity?",
+        "hint": "Try it now if you haven't. You might be surprised.",
+        "options": {
+          "yes_cited": "Yes — and we show up / get cited",
+          "yes_not_cited": "Yes — and we don't appear",
+          "no": "No — haven't checked"
+        }
+      },
+      "q07": {
+        "title": "Does your website use structured data (schema markup)?",
+        "hint": "Schema helps both Google and AI engines understand your content.",
+        "options": {
+          "yes_ext": "Yes, extensively",
+          "some": "Some — like basic Organization or breadcrumbs",
+          "unknown": "I don't know",
+          "no": "No"
+        }
+      },
+      "q08": {
+        "title": "How would you describe your company's use of AI today?",
+        "options": {
+          "none": "We haven't started — AI isn't part of our operations",
+          "experimenting": "A few people use ChatGPT or similar tools ad hoc",
+          "some": "We've integrated AI into some specific workflows",
+          "embedded": "AI is embedded across multiple business functions"
+        }
+      },
+      "q09": {
+        "title": "What's your biggest digital growth challenge?",
+        "hint": "Pick the one that keeps you up at night.",
+        "options": {
+          "visibility": "Getting found — we need more visibility",
+          "conversion": "We get traffic but it doesn't convert",
+          "competitors": "Competitors outrank us and we don't know why",
+          "ai_invisible": "We're invisible in AI search results",
+          "no_strategy": "No clear digital strategy",
+          "scaling": "We need to scale what works across more brands"
+        }
+      },
+      "q10": {
+        "title": "If we could fix one thing about your digital presence in the next 90 days — what would it be?",
+        "hint": "Be specific. We'll reference this directly in your report.",
+        "placeholder": "e.g. \"Get our product pages ranking in Google's top 3 for our core terms\" or \"Show up when someone asks ChatGPT about our industry\""
+      },
+      "q11": {
+        "title": "One last thing — how did you find AskBodhi?",
+        "options": {
+          "google": "Google search",
+          "ai": "AI search (ChatGPT, Perplexity)",
+          "referral": "Referral from someone",
+          "linkedin": "LinkedIn",
+          "other": "Other"
+        }
+      }
+    },
+    "scan": {
+      "scanning": "Analyzing your digital presence...",
+      "complete": "Analysis complete",
+      "lines": [
+        "Querying Ahrefs API for domain metrics...",
+        "Fetching domain rating and backlink profile...",
+        "Mapping organic keyword landscape...",
+        "Running Google PageSpeed analysis...",
+        "Checking AI search engine visibility...",
+        "Identifying organic competitors..."
+      ],
+      "metrics": {
+        "domainRating": "Domain Rating",
+        "organicKeywords": "Organic Keywords",
+        "monthlyTraffic": "Monthly Traffic",
+        "liveBacklinks": "Live Backlinks",
+        "pageSpeed": "PageSpeed (Mobile)",
+        "aiVisibility": "AI Visibility"
+      },
+      "aiVisible": "Visible",
+      "aiNotFound": "Not found",
+      "dataSource": "Data sourced live from Ahrefs, Google PageSpeed & Perplexity",
+      "fallback": "Domain registered for analysis. Your full report will include live metrics."
+    },
+    "competitors": {
+      "heading": "Who are your competitors?",
+      "description": "List the companies you compete with for search visibility. We'll include them in your report.",
+      "placeholder": "e.g. competitor1.com, competitor2.com\nor just company names like \"Acme Corp, Globex\"",
+      "note": "Optional — we'll also identify competitors automatically in your report."
+    },
+    "result": {
+      "heading": "Your AI Readiness Score",
+      "nextHeading": "What happens next",
+      "nextIntro": "Our team will run a full analysis on <strong>{domain}</strong> including:",
+      "nextItems": [
+        "Domain authority & backlink profile",
+        "Keyword landscape & ranking gaps",
+        "Traffic architecture breakdown",
+        "AI visibility & citation audit",
+        "Prioritised action plan"
+      ],
+      "nextTimeline": "Your personalised report will arrive within <strong>24 hours</strong>.",
+      "dimensionsHeading": "Scored Dimensions",
+      "cta": "We've captured your assessment. Our team will review your answers and send a detailed AI readiness report with specific gaps and opportunities.",
+      "ctaButton": "Get Your Full Report →"
+    },
+    "dimensions": {
+      "searchVisibility": "Search Visibility",
+      "aiReadiness": "AI Readiness",
+      "technicalFoundation": "Technical Foundation",
+      "contentStrategy": "Content Strategy",
+      "competitivePosition": "Competitive Position"
+    }
+  }
+}
