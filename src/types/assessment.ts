@@ -76,14 +76,12 @@ export type Step =
   | CompetitorsAiStep
   | ResultStep;
 
-// ─── Real Scan Data Types ───────────────────────────────────────
-
 export interface ScanResult {
   domainRating: number;
   organicKeywords: number;
   monthlyTraffic: number;
-  backlinks: number;
-  source: 'live' | 'cached' | 'fallback';
+  backlinks?: number;
+  source?: 'live' | 'cached' | 'fallback' | 'pending' | string;
 }
 
 export interface PageSpeedResult {
@@ -100,13 +98,6 @@ export interface AiVisibilityResult {
   citations: string[];
 }
 
-export interface CompetitorResult {
-  domain: string;
-  dr: number;
-  commonKeywords: number;
-  checked: boolean;
-}
-
 export interface FullScanResponse {
   domain: string;
   ahrefs: {
@@ -115,15 +106,18 @@ export interface FullScanResponse {
     monthlyTraffic: number;
     backlinks: number;
   } | null;
-  competitors: Array<{
-    domain: string;
-    dr: number;
-    commonKeywords: number;
-  }>;
+  competitors: Array<{ domain: string; dr: number; commonKeywords: number }>;
   pageSpeed: PageSpeedResult | null;
   aiVisibility: AiVisibilityResult | null;
   scannedAt: string;
   errors: string[];
+}
+
+export interface CompetitorResult {
+  domain: string;
+  dr: number;
+  commonKeywords: number;
+  checked: boolean;
 }
 
 export interface DimensionScore {

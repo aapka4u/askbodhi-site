@@ -1,35 +1,181 @@
 @import "tailwindcss";
 
+/* ============================================
+   AskBodhi — Luminous Clarity Design System
+   ============================================ */
+
 :root {
+  /* Brand Colors */
   --color-teal: #0F766E;
   --color-teal-bright: #14B8A6;
   --color-teal-pale: #F0FDFA;
   --color-ember: #EA580C;
   --color-ember-soft: #FFF7ED;
+
+  /* Neutrals */
   --color-bg: #FAFAF9;
   --color-white: #FFFFFF;
-  --color-stone-50: #F9F8F7;
   --color-stone-100: #F5F5F4;
   --color-stone-200: #E7E5E4;
-  --color-stone-300: #D6D3D1;
   --color-stone-400: #A8A29E;
-  --color-stone-500: #78716C;
   --color-stone-600: #57534E;
   --color-charcoal: #1C1917;
+
+  /* Typography */
+  --font-display: 'Lora', Georgia, serif;
+  --font-body: var(--font-instrument-sans), 'Instrument Sans', Inter, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --spacing-page: 96px;
+  --spacing-page-mobile: 24px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
 }
 
-* {
-  box-sizing: border-box;
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-charcoal);
+  --color-teal: #0F766E;
+  --color-teal-bright: #14B8A6;
+  --color-teal-pale: #F0FDFA;
+  --color-ember: #EA580C;
+  --color-ember-soft: #FFF7ED;
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
 }
 
+/* Base */
 body {
-  background: var(--color-bg);
+  background-color: var(--color-bg);
   color: var(--color-stone-600);
+  font-family: var(--font-body);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-charcoal);
+  line-height: 1.2;
+}
+
+/* Utility: monospace for data */
+.font-data {
+  font-family: var(--font-mono);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
 ::selection {
   background-color: var(--color-teal-pale);
   color: var(--color-teal);
+}
+
+/* ===== Header Navigation ===== */
+.nav-link {
+  font-family: var(--font-body);
+  color: var(--color-stone-600);
+}
+
+.nav-link:hover {
+  color: var(--color-teal);
+}
+
+.nav-cta {
+  font-family: var(--font-body);
+  background-color: var(--color-teal);
+  color: #fff;
+}
+
+.nav-cta:hover {
+  background-color: var(--color-teal-bright);
+}
+
+/* ===== Autocomplete Component ===== */
+.ac-group {
+  position: relative;
+}
+
+.ac-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-stone-400);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ac-input {
+  width: 100%;
+  border: 1.5px solid var(--color-stone-200);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  font-size: 16px;
+  font-family: var(--font-body);
+  background: var(--color-white);
+  color: var(--color-charcoal);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.ac-input:focus {
+  border-color: var(--color-teal);
+}
+
+.ac-input::placeholder {
+  color: var(--color-stone-400);
+}
+
+.ac-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-stone-200);
+  border-radius: var(--radius-lg);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 50;
+  list-style: none;
+  padding: 4px;
+  box-shadow: 0 8px 24px rgba(28, 25, 23, 0.08);
+  animation: dropdownIn 0.15s ease-out;
+}
+
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ac-item {
+  padding: 10px 14px;
+  font-size: 15px;
+  color: var(--color-stone-600);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ac-item strong {
+  color: var(--color-teal);
+  font-weight: 600;
+}
+
+.ac-item:hover,
+.ac-item-active {
+  background: var(--color-teal-pale);
+  color: var(--color-charcoal);
 }

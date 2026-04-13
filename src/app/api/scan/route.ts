@@ -60,13 +60,9 @@ interface ScanResponse {
 // ─── Helpers ───────────────────────────────────────────────────
 function cleanDomain(input: string): string {
   let d = input.trim().toLowerCase();
-  // Remove protocol
   d = d.replace(/^https?:\/\//, '');
-  // Remove www.
   d = d.replace(/^www\./, '');
-  // Remove trailing slash and path
   d = d.split('/')[0];
-  // Remove port
   d = d.split(':')[0];
   return d;
 }
@@ -87,9 +83,10 @@ function todayStr(): string {
 async function fetchAhrefs(domain: string): Promise<{
   metrics: AhrefsMetrics | null;
   competitors: AhrefsCompetitor[];
+  error?: string;
 }> {
   const token = process.env.AHREFS_API_TOKEN;
-  if (!token) return { metrics: null, competitors: [] };
+  if (!token) return { metrics: null, competitors: [], error: 'AHREFS_API_TOKEN not configured' };
 
   const baseUrl = 'https://api.ahrefs.com/v3/site-explorer';
   const headers = {
@@ -99,15 +96,12 @@ async function fetchAhrefs(domain: string): Promise<{
   const date = todayStr();
 
   try {
-    // Fire all four Ahrefs calls in parallel
     const [drRes, metricsRes, blRes, compRes] = await Promise.allSettled([
-      // 1. Domain Rating
       fetch(
         `${baseUrl}/domain-rating?` +
           new URLSearchParams({ target: domain, date }).toString(),
         { headers, signal: AbortSignal.timeout(10000) }
       ),
-      // 2. Metrics (organic keywords + traffic)
       fetch(
         `${baseUrl}/metrics?` +
           new URLSearchParams({
@@ -117,7 +111,6 @@ async function fetchAhrefs(domain: string): Promise<{
           }).toString(),
         { headers, signal: AbortSignal.timeout(10000) }
       ),
-      // 3. Backlinks Stats (separate endpoint)
       fetch(
         `${baseUrl}/backlinks-stats?` +
           new URLSearchParams({
@@ -127,7 +120,6 @@ async function fetchAhrefs(domain: string): Promise<{
           }).toString(),
         { headers, signal: AbortSignal.timeout(10000) }
       ),
-      // 4. Organic Competitors (requires select + country)
       fetch(
         `${baseUrl}/organic-competitors?` +
           new URLSearchParams({
@@ -142,16 +134,12 @@ async function fetchAhrefs(domain: string): Promise<{
       ),
     ]);
 
-    // Parse Domain Rating
-    // API returns: { "domain_rating": { "domain_rating": 46.0, "ahrefs_rank": 912037 } }
     let domainRating = 0;
     if (drRes.status === 'fulfilled' && drRes.value.ok) {
       const drData = await drRes.value.json();
       domainRating = drData.domain_rating?.domain_rating ?? 0;
     }
 
-    // Parse Metrics
-    // API returns: { "metrics": { "org_keywords": 962, "org_traffic": 2176, ... } }
     let organicKeywords = 0;
     let monthlyTraffic = 0;
     if (metricsRes.status === 'fulfilled' && metricsRes.value.ok) {
@@ -160,16 +148,12 @@ async function fetchAhrefs(domain: string): Promise<{
       monthlyTraffic = Math.round(mData.metrics?.org_traffic ?? 0);
     }
 
-    // Parse Backlinks
-    // API returns: { "metrics": { "live": 8134, "all_time": 18662, ... } }
     let backlinks = 0;
     if (blRes.status === 'fulfilled' && blRes.value.ok) {
       const blData = await blRes.value.json();
       backlinks = blData.metrics?.live ?? 0;
     }
 
-    // Parse Competitors
-    // API returns: { "competitors": [{ "competitor_domain": "...", "domain_rating": 88, "keywords_common": 91 }] }
     const competitors: AhrefsCompetitor[] = [];
     if (compRes.status === 'fulfilled' && compRes.value.ok) {
       const cData = await compRes.value.json();
@@ -188,13 +172,17 @@ async function fetchAhrefs(domain: string): Promise<{
       competitors,
     };
   } catch (err) {
-    console.error('[Ahrefs] Failed:', err);
-    return { metrics: null, competitors: [] };
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[Ahrefs] Failed:', msg);
+    return { metrics: null, competitors: [], error: `Ahrefs: ${msg}` };
   }
 }
 
 // ─── Google PageSpeed Insights ─────────────────────────────────
-async function fetchPageSpeed(url: string): Promise<PageSpeedResult | null> {
+async function fetchPageSpeed(url: string): Promise<{
+  result: PageSpeedResult | null;
+  error?: string;
+}> {
   try {
     const apiKey = process.env.PAGESPEED_API_KEY;
     const params = new URLSearchParams({
@@ -206,27 +194,43 @@ async function fetchPageSpeed(url: string): Promise<PageSpeedResult | null> {
 
     const res = await fetch(
       `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?${params.toString()}`,
-      { signal: AbortSignal.timeout(30000) } // PageSpeed can be slow
+      { signal: AbortSignal.timeout(30000) }
     );
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      const errBody = await res.text().catch(() => '');
+      const errMsg = `PageSpeed returned ${res.status}`;
+      try {
+        const errJson = JSON.parse(errBody);
+        const googleMsg = errJson.error?.message || '';
+        if (googleMsg.includes('Quota')) {
+          return { result: null, error: 'PageSpeed: API key required (quota exceeded). Add PAGESPEED_API_KEY to env vars.' };
+        }
+        return { result: null, error: `${errMsg}: ${googleMsg.slice(0, 100)}` };
+      } catch {
+        return { result: null, error: errMsg };
+      }
+    }
 
     const data = await res.json();
     const lighthouse = data.lighthouseResult;
-    if (!lighthouse) return null;
+    if (!lighthouse) return { result: null, error: 'PageSpeed: No Lighthouse data in response' };
 
     const audits = lighthouse.audits ?? {};
 
     return {
-      performanceScore: Math.round((lighthouse.categories?.performance?.score ?? 0) * 100),
-      lcp: Math.round(audits['largest-contentful-paint']?.numericValue ?? 0),
-      cls: parseFloat((audits['cumulative-layout-shift']?.numericValue ?? 0).toFixed(3)),
-      fcp: Math.round(audits['first-contentful-paint']?.numericValue ?? 0),
-      speedIndex: Math.round(audits['speed-index']?.numericValue ?? 0),
+      result: {
+        performanceScore: Math.round((lighthouse.categories?.performance?.score ?? 0) * 100),
+        lcp: Math.round(audits['largest-contentful-paint']?.numericValue ?? 0),
+        cls: parseFloat((audits['cumulative-layout-shift']?.numericValue ?? 0).toFixed(3)),
+        fcp: Math.round(audits['first-contentful-paint']?.numericValue ?? 0),
+        speedIndex: Math.round(audits['speed-index']?.numericValue ?? 0),
+      },
     };
   } catch (err) {
-    console.error('[PageSpeed] Failed:', err);
-    return null;
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[PageSpeed] Failed:', msg);
+    return { result: null, error: `PageSpeed: ${msg}` };
   }
 }
 
@@ -234,9 +238,12 @@ async function fetchPageSpeed(url: string): Promise<PageSpeedResult | null> {
 async function fetchAiVisibility(
   domain: string,
   companyName?: string
-): Promise<AiVisibilityResult | null> {
+): Promise<{
+  result: AiVisibilityResult | null;
+  error?: string;
+}> {
   const apiKey = process.env.PERPLEXITY_API_KEY;
-  if (!apiKey) return null;
+  if (!apiKey) return { result: null, error: 'PERPLEXITY_API_KEY not configured' };
 
   try {
     const query = companyName
@@ -264,13 +271,21 @@ async function fetchAiVisibility(
       signal: AbortSignal.timeout(15000),
     });
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      const errBody = await res.text().catch(() => '');
+      const errMsg = `Perplexity returned ${res.status}`;
+      try {
+        const errJson = JSON.parse(errBody);
+        return { result: null, error: `${errMsg}: ${errJson.error?.message || errJson.detail || errBody.slice(0, 100)}` };
+      } catch {
+        return { result: null, error: `${errMsg}: ${errBody.slice(0, 100)}` };
+      }
+    }
 
     const data = await res.json();
     const content: string = data.choices?.[0]?.message?.content ?? '';
     const citations: string[] = data.citations ?? [];
 
-    // Determine if the brand is actually mentioned/known
     const lowerContent = content.toLowerCase();
     const domainLower = domain.toLowerCase();
     const companyLower = (companyName ?? domain).toLowerCase();
@@ -283,13 +298,16 @@ async function fetchAiVisibility(
       (lowerContent.includes(domainLower) || lowerContent.includes(companyLower));
 
     return {
-      mentioned,
-      context: content.slice(0, 300),
-      citations: citations.slice(0, 5),
+      result: {
+        mentioned,
+        context: content.slice(0, 300),
+        citations: citations.slice(0, 5),
+      },
     };
   } catch (err) {
-    console.error('[Perplexity] Failed:', err);
-    return null;
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[Perplexity] Failed:', msg);
+    return { result: null, error: `Perplexity: ${msg}` };
   }
 }
 
@@ -340,28 +358,24 @@ export async function POST(req: NextRequest) {
     // ── Assemble response ──
     const errors: string[] = [];
 
-    const ahrefs =
-      ahrefsResult.status === 'fulfilled'
-        ? ahrefsResult.value.metrics
-        : null;
-    if (!ahrefs) errors.push('Domain metrics temporarily unavailable');
+    const ahrefsData = ahrefsResult.status === 'fulfilled' ? ahrefsResult.value : null;
+    const ahrefs = ahrefsData?.metrics ?? null;
+    if (!ahrefs) {
+      errors.push(ahrefsData?.error || 'Domain metrics temporarily unavailable');
+    }
+    const competitors = ahrefsData?.competitors ?? [];
 
-    const competitors =
-      ahrefsResult.status === 'fulfilled'
-        ? ahrefsResult.value.competitors
-        : [];
+    const psData = pageSpeedResult.status === 'fulfilled' ? pageSpeedResult.value : null;
+    const pageSpeed = psData?.result ?? null;
+    if (!pageSpeed) {
+      errors.push(psData?.error || 'PageSpeed analysis failed');
+    }
 
-    const pageSpeed =
-      pageSpeedResult.status === 'fulfilled'
-        ? pageSpeedResult.value
-        : null;
-    if (!pageSpeed) errors.push('PageSpeed analysis timed out');
-
-    const aiVisibility =
-      aiVisResult.status === 'fulfilled'
-        ? aiVisResult.value
-        : null;
-    if (!aiVisibility) errors.push('AI visibility check unavailable');
+    const aiData = aiVisResult.status === 'fulfilled' ? aiVisResult.value : null;
+    const aiVisibility = aiData?.result ?? null;
+    if (!aiVisibility) {
+      errors.push(aiData?.error || 'AI visibility check failed');
+    }
 
     const response: ScanResponse = {
       domain,
@@ -373,8 +387,10 @@ export async function POST(req: NextRequest) {
       errors,
     };
 
-    // ── Cache result ──
-    domainCache.set(domain, { data: response, ts: Date.now() });
+    // ── Cache result (only if at least one API succeeded) ──
+    if (ahrefs || pageSpeed || aiVisibility) {
+      domainCache.set(domain, { data: response, ts: Date.now() });
+    }
 
     return NextResponse.json(response);
   } catch (err) {

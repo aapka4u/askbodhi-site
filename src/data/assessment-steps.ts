@@ -96,19 +96,19 @@ export const STEPS: Step[] = [
   {
     type: 'fields',
     num: '01',
-    title: "Let's start with you",
-    hint: "We'll use this to send your AI Readiness Report.",
+    title: '',
+    hint: '',
     fields: [
       {
         row: [
-          { id: 'name', label: 'Your name', placeholder: 'Full name', required: true },
-          { id: 'role', label: 'Your role', placeholder: 'e.g. CEO, Head of Marketing', required: true },
+          { id: 'name', label: '', placeholder: '', required: true },
+          { id: 'role', label: '', placeholder: '', required: true },
         ],
       },
       {
         row: [
-          { id: 'email', label: 'Work email', placeholder: 'you@company.com', type: 'email', required: true },
-          { id: 'company', label: 'Company name', placeholder: 'Your company', required: true },
+          { id: 'email', label: '', placeholder: '', type: 'email', required: true },
+          { id: 'company', label: '', placeholder: '', required: true },
         ],
       },
     ],
@@ -118,32 +118,32 @@ export const STEPS: Step[] = [
   {
     type: 'fields',
     num: '02',
-    title: 'About your company',
-    hint: 'Your website URL is the most important field — it triggers our live analysis.',
+    title: '',
+    hint: '',
     fields: [
-      { single: { id: 'website', label: 'Company website', placeholder: 'https://yourcompany.com', type: 'url', required: true } },
+      { single: { id: 'website', label: '', placeholder: '', type: 'url', required: true } },
       {
         row: [
-          { id: 'industry', label: 'Industry / sector', placeholder: 'Start typing...', required: true },
-          { id: 'country', label: 'Primary market', placeholder: 'Start typing...', required: true },
+          { id: 'industry', label: '', placeholder: '', required: true },
+          { id: 'country', label: '', placeholder: '', required: true },
         ],
       },
     ],
   },
 
   // AI MOMENT 1: Domain Scan
-  { type: 'scan', title: 'Scanning your digital footprint...' },
+  { type: 'scan', title: '' },
 
   // Q3: Company size
   {
     type: 'choice',
     num: '03',
-    title: 'How big is your team?',
+    title: '',
     options: [
-      { key: 'A', text: '1–10 people', value: '1-10' },
-      { key: 'B', text: '11–50 people', value: '11-50' },
-      { key: 'C', text: '51–200 people', value: '51-200' },
-      { key: 'D', text: '200+ people', value: '200+' },
+      { key: 'A', text: '', value: '1-10' },
+      { key: 'B', text: '', value: '11-50' },
+      { key: 'C', text: '', value: '51-200' },
+      { key: 'D', text: '', value: '200+' },
     ],
   },
 
@@ -151,14 +151,14 @@ export const STEPS: Step[] = [
   {
     type: 'choice',
     num: '04',
-    title: 'Where do most of your customers find you today?',
+    title: '',
     options: [
-      { key: 'A', text: 'Google search', value: 'google' },
-      { key: 'B', text: 'Paid ads (Google, Meta, LinkedIn)', value: 'paid' },
-      { key: 'C', text: 'Referrals or word of mouth', value: 'referral' },
-      { key: 'D', text: 'Social media', value: 'social' },
-      { key: 'E', text: 'AI search (ChatGPT, Perplexity)', value: 'ai_search' },
-      { key: 'F', text: "Honestly, I'm not sure", value: 'unsure' },
+      { key: 'A', text: '', value: 'google' },
+      { key: 'B', text: '', value: 'paid' },
+      { key: 'C', text: '', value: 'referral' },
+      { key: 'D', text: '', value: 'social' },
+      { key: 'E', text: '', value: 'ai_search' },
+      { key: 'F', text: '', value: 'unsure' },
     ],
   },
 
@@ -166,12 +166,12 @@ export const STEPS: Step[] = [
   {
     type: 'choice',
     num: '05',
-    title: 'Do you know what percentage of your website traffic actually drives revenue?',
-    hint: "This is the question most companies can't answer.",
+    title: '',
+    hint: '',
     options: [
-      { key: 'A', text: 'Yes — we track this closely', value: 'yes' },
-      { key: 'B', text: 'We have a rough idea', value: 'roughly' },
-      { key: 'C', text: 'No — we track traffic but not its commercial value', value: 'no' },
+      { key: 'A', text: '', value: 'yes' },
+      { key: 'B', text: '', value: 'roughly' },
+      { key: 'C', text: '', value: 'no' },
     ],
   },
 
@@ -179,12 +179,12 @@ export const STEPS: Step[] = [
   {
     type: 'choice',
     num: '06',
-    title: 'Have you searched for your company in ChatGPT or Perplexity?',
-    hint: "Try it now if you haven't. You might be surprised.",
+    title: '',
+    hint: '',
     options: [
-      { key: 'A', text: 'Yes — and we show up / get cited', value: 'yes_cited' },
-      { key: 'B', text: "Yes — and we don't appear", value: 'yes_not_cited' },
-      { key: 'C', text: "No — haven't checked", value: 'no' },
+      { key: 'A', text: '', value: 'yes_cited' },
+      { key: 'B', text: '', value: 'yes_not_cited' },
+      { key: 'C', text: '', value: 'no' },
     ],
   },
 
@@ -192,13 +192,13 @@ export const STEPS: Step[] = [
   {
     type: 'choice',
     num: '07',
-    title: 'Does your website use structured data (schema markup)?',
-    hint: 'Schema helps both Google and AI engines understand your content.',
+    title: '',
+    hint: '',
     options: [
-      { key: 'A', text: 'Yes, extensively', value: 'yes' },
-      { key: 'B', text: 'Some — like basic Organization or breadcrumbs', value: 'some' },
-      { key: 'C', text: "I don't know", value: 'unknown' },
-      { key: 'D', text: 'No', value: 'no' },
+      { key: 'A', text: '', value: 'yes_ext' },
+      { key: 'B', text: '', value: 'some' },
+      { key: 'C', text: '', value: 'unknown' },
+      { key: 'D', text: '', value: 'no' },
     ],
   },
 
@@ -206,12 +206,12 @@ export const STEPS: Step[] = [
   {
     type: 'choice',
     num: '08',
-    title: "How would you describe your company's use of AI today?",
+    title: '',
     options: [
-      { key: 'A', text: "We haven't started — AI isn't part of our operations", value: 'none' },
-      { key: 'B', text: 'A few people use ChatGPT or similar tools ad hoc', value: 'experimenting' },
-      { key: 'C', text: "We've integrated AI into some specific workflows", value: 'some' },
-      { key: 'D', text: 'AI is embedded across multiple business functions', value: 'embedded' },
+      { key: 'A', text: '', value: 'none' },
+      { key: 'B', text: '', value: 'experimenting' },
+      { key: 'C', text: '', value: 'some' },
+      { key: 'D', text: '', value: 'embedded' },
     ],
   },
 
@@ -219,35 +219,34 @@ export const STEPS: Step[] = [
   {
     type: 'choice',
     num: '09',
-    title: "What's your biggest digital growth challenge?",
-    hint: 'Pick the one that keeps you up at night.',
+    title: '',
+    hint: '',
     options: [
-      { key: 'A', text: 'Getting found — we need more visibility', value: 'visibility' },
-      { key: 'B', text: "We get traffic but it doesn't convert", value: 'conversion' },
-      { key: 'C', text: "Competitors outrank us and we don't know why", value: 'competitors' },
-      { key: 'D', text: "We're invisible in AI search results", value: 'ai_invisible' },
-      { key: 'E', text: 'No clear digital strategy', value: 'no_strategy' },
-      { key: 'F', text: 'We need to scale what works across more brands', value: 'scaling' },
+      { key: 'A', text: '', value: 'visibility' },
+      { key: 'B', text: '', value: 'conversion' },
+      { key: 'C', text: '', value: 'competitors' },
+      { key: 'D', text: '', value: 'ai_invisible' },
+      { key: 'E', text: '', value: 'no_strategy' },
+      { key: 'F', text: '', value: 'scaling' },
     ],
   },
 
   // AI MOMENT 2: Competitor Intelligence
   {
     type: 'competitors_ai',
-    title: 'We found your competitors',
-    hint: 'Based on your keyword overlap, these companies compete for the same search terms.',
+    title: '',
+    hint: '',
   },
 
   // Q10: 90-day wish
   {
     type: 'text',
     num: '10',
-    title: 'If we could fix one thing about your digital presence in the next 90 days — what would it be?',
-    hint: "Be specific. We'll reference this directly in your report.",
+    title: '',
+    hint: '',
     field: {
       id: 'wish',
-      placeholder:
-        'e.g. "Get our product pages ranking in Google\'s top 3 for our core terms" or "Show up when someone asks ChatGPT about our industry"',
+      placeholder: '',
       multiline: true,
     },
     optional: false,
@@ -257,13 +256,13 @@ export const STEPS: Step[] = [
   {
     type: 'choice',
     num: '11',
-    title: 'One last thing — how did you find AskBodhi?',
+    title: '',
     options: [
-      { key: 'A', text: 'Google search', value: 'google' },
-      { key: 'B', text: 'AI search (ChatGPT, Perplexity)', value: 'ai' },
-      { key: 'C', text: 'Referral from someone', value: 'referral' },
-      { key: 'D', text: 'LinkedIn', value: 'linkedin' },
-      { key: 'E', text: 'Other', value: 'other' },
+      { key: 'A', text: '', value: 'google' },
+      { key: 'B', text: '', value: 'ai' },
+      { key: 'C', text: '', value: 'referral' },
+      { key: 'D', text: '', value: 'linkedin' },
+      { key: 'E', text: '', value: 'other' },
     ],
   },
 

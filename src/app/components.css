@@ -1,0 +1,255 @@
+/* ===== Service Cards (homepage) ===== */
+.service-card-next {
+  border: 1px solid var(--color-stone-200);
+  border-radius: 16px;
+  padding: 32px;
+  background: var(--color-white);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.service-card-next:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+.service-featured {
+  border-color: var(--color-teal);
+  background: linear-gradient(180deg, var(--color-teal-pale) 0%, var(--color-white) 40%);
+}
+.service-featured::before {
+  content: 'Core Expertise';
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--color-teal);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 0 12px 0 8px;
+  letter-spacing: 0.04em;
+}
+.service-horizon {
+  border-style: dashed;
+  border-color: var(--color-stone-200);
+}
+.service-horizon::before {
+  content: 'As the partnership matures';
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--color-stone-200);
+  color: var(--color-stone-600);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 0 16px 0 8px;
+  letter-spacing: 0.04em;
+}
+
+/* ===== Case Cards (homepage) ===== */
+.case-card-next {
+  border: 1px solid var(--color-stone-200);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s;
+}
+.case-card-next:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+
+/* ===== Mirror Card ===== */
+.mirror-card {
+  border: 1px solid var(--color-teal);
+  border-radius: 16px;
+  padding: 36px 40px;
+  background: linear-gradient(135deg, var(--color-teal-pale) 0%, rgba(240,253,250,0.5) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.mirror-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-teal), var(--color-teal-bright));
+}
+.mirror-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .mirror-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+  }
+}
+.mirror-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--color-stone-600);
+  line-height: 1.6;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.mirror-list li:hover {
+  background: rgba(15,118,110,0.05);
+}
+.mirror-bullet {
+  color: #fff;
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Tool Trust Bar ===== */
+.tool-logo-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-stone-200);
+  transition: all 0.3s ease;
+}
+.tool-logo-chip:hover {
+  border-color: var(--color-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.tool-logo-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-stone-600);
+}
+.tool-logo-chip:hover .tool-logo-label {
+  color: var(--color-charcoal);
+}
+
+/* ===== Vision Tags ===== */
+.vision-tag-active {
+  background: var(--color-teal);
+  border-color: var(--color-teal);
+  color: #fff;
+}
+.vision-tag-next {
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+  background: var(--color-teal-pale);
+  opacity: 0.8;
+}
+.vision-tag-future {
+  border-color: var(--color-stone-200);
+  color: var(--color-stone-400);
+  background: var(--color-white);
+  opacity: 0.5;
+}
+
+/* ===== FAQ ===== */
+.faq-grid .faq-item {
+  border-bottom: 1px solid var(--color-stone-200);
+}
+.faq-grid .faq-item:first-child {
+  border-top: 1px solid var(--color-stone-200);
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-charcoal);
+  text-align: left;
+  transition: all 0.2s;
+}
+.faq-question:hover {
+  color: var(--color-teal);
+  padding-left: 8px;
+}
+.faq-toggle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--color-stone-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--color-stone-400);
+  transition: all 0.3s;
+  border: 1px solid var(--color-stone-200);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-answer-inner {
+  padding: 0 4px 24px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-stone-600);
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+}
+.faq-item.open .faq-toggle {
+  background: var(--color-teal);
+  color: #fff;
+  border-color: var(--color-teal);
+  transform: rotate(45deg);
+}
+
+/* ===== Assessment page overrides ===== */
+.assessment-page input:focus-visible,
+.assessment-page textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.08);
+}
+
+/* Hover states for option cards */
+.option-card:hover {
+  border-color: var(--color-teal) !important;
+  background: var(--color-teal-pale) !important;
+  transform: translateX(4px);
+}
+
+/* Scan terminal scrollbar */
+.scan-terminal::-webkit-scrollbar {
+  width: 4px;
+}
+.scan-terminal::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+}
